@@ -9,14 +9,12 @@ public class TinkerTailor {
     private int N;
     
     private List<Integer> nums = new ArrayList<>();
-    private List<Boolean> used = new ArrayList<>();
     private List<Integer> outPut = new ArrayList<>();
 
 
     TinkerTailor(int n, int k){
         for (int i = 1; i <= n; i++) {
             nums.add(i);
-            used.add(false);
         }
         kSeq = k;
         N = n;
@@ -32,25 +30,14 @@ public class TinkerTailor {
         } else {
             out.add(numbers.get(i-1));
             numbers.remove(i-1);
-            //System.out.println("out: " + out);
 
-            for (int j = 0; j < i-1; j++) {
-                numbers.add(numbers.get(j));
-                //System.out.println("ADD numbers: " + numbers);
-            }
-
-            for (int j = 0; j < i-1; j++) {
-                numbers.remove(0);
-                //System.out.println("REM numbers: " + numbers);
-
-            }
-            //System.out.println();
+            for (int j = 0; j < i-1; j++) { numbers.add(numbers.get(j)); }
+            for (int j = 0; j < i-1; j++) { numbers.remove(0); }
 
             if(kSeq > numbers.size()){
                 int shift = kSeq-numbers.size();
                 for (int j = 0; j <= shift; j++) {
                     numbers.add(numbers.get(j));
-                    //System.out.println("ADD numbers2: " + numbers);
                 }
             }
             i = kSeq;
@@ -59,6 +46,8 @@ public class TinkerTailor {
     }
     
     public static void main(String[] args) {
-        TinkerTailor test = new TinkerTailor(10, 3);
+        TinkerTailor test = new TinkerTailor(5, 3);
+        TinkerTailor test1 = new TinkerTailor(10, 3);
+        TinkerTailor test2 = new TinkerTailor(10, 4);
     }
 }
