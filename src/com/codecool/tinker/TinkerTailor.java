@@ -11,7 +11,6 @@ public class TinkerTailor {
     private List<Integer> nums = new ArrayList<>();
     private List<Integer> outPut = new ArrayList<>();
 
-
     TinkerTailor(int n, int k){
         for (int i = 1; i <= n; i++) {
             nums.add(i);
@@ -21,18 +20,15 @@ public class TinkerTailor {
         tinkerTailor(nums, outPut);
     }
 
-
-    public void tinkerTailor(List<Integer> numbers, List<Integer> out){
+    private void tinkerTailor(List<Integer> numbers, List<Integer> out){
 
         if(out.size() == N){
             System.out.println(out);
-            return;
         } else {
             for (int j = 1; j < kSeq; j++) {
                 numbers.add(numbers.get(0));
                 numbers.remove(0);
             }
-
             out.add(numbers.get(0));
             numbers.remove(0);
 
