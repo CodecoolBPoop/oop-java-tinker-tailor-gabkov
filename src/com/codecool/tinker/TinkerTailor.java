@@ -18,35 +18,31 @@ public class TinkerTailor {
         }
         kSeq = k;
         N = n;
-        tinkerTailor(nums, k, outPut);
+        tinkerTailor(nums, outPut);
     }
 
 
-    public void tinkerTailor(List<Integer> numbers, int i, List<Integer> out){
+    public void tinkerTailor(List<Integer> numbers, List<Integer> out){
 
         if(out.size() == N){
             System.out.println(out);
             return;
         } else {
-            out.add(numbers.get(i-1));
-            numbers.remove(i-1);
-
-            for (int j = 0; j < i-1; j++) { numbers.add(numbers.get(j)); }
-            for (int j = 0; j < i-1; j++) { numbers.remove(0); }
-
-            if(kSeq > numbers.size()){
-                int shift = kSeq-numbers.size();
-                for (int j = 0; j <= shift; j++) {
-                    numbers.add(numbers.get(j));
-                }
+            for (int j = 1; j < kSeq; j++) {
+                numbers.add(numbers.get(0));
+                numbers.remove(0);
             }
-            i = kSeq;
-            tinkerTailor(numbers, i, out);
+
+            out.add(numbers.get(0));
+            numbers.remove(0);
+
+            tinkerTailor(numbers, out);
         }
     }
-    
+
     public static void main(String[] args) {
-        TinkerTailor test = new TinkerTailor(5, 3);
+        TinkerTailor test = new TinkerTailor(10, 7);
+        TinkerTailor test3 = new TinkerTailor(5, 3);
         TinkerTailor test1 = new TinkerTailor(10, 3);
         TinkerTailor test2 = new TinkerTailor(10, 4);
     }
